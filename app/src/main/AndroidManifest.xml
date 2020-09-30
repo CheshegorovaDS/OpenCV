@@ -18,6 +18,7 @@
         </activity>
         <activity android:name="MatrixActivity"/>
         <activity android:name="LoadImageActivity"/>
+        <activity android:name="ShowImagesActivity"/>
     </application>
 
 </manifest>

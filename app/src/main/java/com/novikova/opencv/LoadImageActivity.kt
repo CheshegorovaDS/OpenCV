@@ -1,5 +1,6 @@
 package com.novikova.opencv
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -14,6 +15,7 @@ class LoadImageActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_load_image)
         loadImageToMatrix()
+        next.setOnClickListener { nextActivity() }
     }
 
     private fun loadImageToMatrix() {
@@ -36,5 +38,10 @@ class LoadImageActivity: AppCompatActivity() {
         size.text = "${matrix.rows()} * ${matrix.cols()}"
         matrixValues.text = "${matrix.channels()}"
         sizeText2.text = "${matrix.width()} * ${matrix.height()}"
+    }
+
+    private fun nextActivity(){
+        val intent = Intent(this, ShowImagesActivity::class.java)
+        startActivity(intent)
     }
 }
