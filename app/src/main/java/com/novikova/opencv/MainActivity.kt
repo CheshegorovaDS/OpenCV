@@ -10,6 +10,7 @@ import org.opencv.core.Core
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        App()
         setContentView(R.layout.activity_main)
         writeVersion()
         next.setOnClickListener { nextActivity() }
@@ -23,19 +24,4 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this, MatrixActivity::class.java)
         startActivity(intent)
     }
-
-//    override fun onResume() {
-//        super.onResume()
-//        //Вызываем асинхронный загрузчик библиотеки
-//        OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_2_4_8, this, loaderCallback)
-//    }
-//
-//    private val loaderCallback: BaseLoaderCallback = object : BaseLoaderCallback(this) {
-//        override fun onManagerConnected(status: Int) {
-//            when (status) {
-//                LoaderCallbackInterface.SUCCESS -> nextActivity()
-//                else -> super.onManagerConnected(status)
-//            }
-//        }
-//    }
 }

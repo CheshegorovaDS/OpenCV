@@ -6,28 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/titleSimpleMatrix"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        style="@style/TitleStyle"
-        android:text="Simple Matrix"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/simpleMatrix"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:text="TextView"
-        style="@style/TextStyle"
-        app:layout_constraintStart_toEndOf="@+id/titleSimpleMatrix"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <Button
         android:id="@+id/next"
         android:layout_width="wrap_content"
@@ -39,24 +17,46 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/titleMatrixWithScalar"
+        android:id="@+id/title"
+        style="@style/TitleStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
-        style="@style/TitleStyle"
-        android:text="Matrix With Scalar"
+        android:text="Матрица изображения"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/simpleMatrix" />
+        app:layout_constraintTop_toBottomOf="@+id/sizeTitle" />
 
     <TextView
-        android:id="@+id/matrixWithScalar"
-        style="@style/TextStyle"
+        android:id="@+id/matrixValues"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:text="TextView"
-        app:layout_constraintStart_toEndOf="@+id/titleMatrixWithScalar"
-        app:layout_constraintTop_toBottomOf="@+id/simpleMatrix" />
+        style="@style/TextStyle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
+
+    <TextView
+        android:id="@+id/sizeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:text="Размер матрицы"
+        style="@style/TitleStyle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:text="TextView"
+        style="@style/TextStyle"
+        app:layout_constraintStart_toEndOf="@+id/sizeTitle"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
