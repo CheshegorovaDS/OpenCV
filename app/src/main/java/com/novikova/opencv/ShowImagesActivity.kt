@@ -1,16 +1,17 @@
 package com.novikova.opencv
 
+import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_load_image.*
 import kotlinx.android.synthetic.main.activity_show_image.*
 import org.opencv.android.Utils
 import org.opencv.core.Mat
 import org.opencv.core.MatOfByte
 import org.opencv.imgcodecs.Imgcodecs
+import org.opencv.imgproc.Imgproc
 
 class ShowImagesActivity: AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,6 +20,7 @@ class ShowImagesActivity: AppCompatActivity(), View.OnClickListener {
         unchanged.setOnClickListener(this)
         colored.setOnClickListener(this)
         grayscale.setOnClickListener(this)
+        next.setOnClickListener{ nextActivity() }
     }
 
     override fun onClick(v: View?) {
@@ -49,7 +51,7 @@ class ShowImagesActivity: AppCompatActivity(), View.OnClickListener {
 
         val bytes = input.readBytes()
         val matWithBytes = MatOfByte(*bytes)
-
+//      сохранило в BGR
         matrix = Imgcodecs.imdecode(matWithBytes, code)
 
         if (matrix.empty()) {
@@ -61,7 +63,11 @@ class ShowImagesActivity: AppCompatActivity(), View.OnClickListener {
             return
         }
 
-        openMatrix(matrix)
+        val matRGB = Mat()
+//      преобразование BGR в RGB
+        Imgproc.cvtColor(matrix, matRGB, Imgproc.COLOR_BGR2RGB)
+
+        openMatrix(matRGB)
     }
 
     private fun openMatrix(imageMatrix: Mat) {
@@ -76,6 +82,11 @@ class ShowImagesActivity: AppCompatActivity(), View.OnClickListener {
         imageView.setImageBitmap(bitmapFromMatrix)
         imageView.visibility = View.VISIBLE
         codeImage.visibility = View.VISIBLE
+    }
+
+    private fun nextActivity(){
+        val intent = Intent(this, DrawFigureActivity::class.java)
+        startActivity(intent)
     }
 
 }
