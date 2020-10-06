@@ -1,5 +1,6 @@
 package com.novikova.opencv
 
+import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.widget.ImageView
@@ -20,6 +21,7 @@ class DrawFigureActivity: AppCompatActivity() {
         openMatrix(rectangle(), imageRectangle)
         openMatrix(circle(), imageCircle)
         openMatrix(fillPoly(), imageFillPoly)
+        next.setOnClickListener { nextActivity() }
     }
 
     private fun line(): Mat {
@@ -120,5 +122,10 @@ class DrawFigureActivity: AppCompatActivity() {
 
         Utils.matToBitmap(imageMatrix, bitmapFromMatrix)
         imageView.setImageBitmap(bitmapFromMatrix)
+    }
+
+    private fun nextActivity(){
+        val intent = Intent(this, TextActivity::class.java)
+        startActivity(intent)
     }
 }
