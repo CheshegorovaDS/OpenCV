@@ -16,10 +16,8 @@ class TextActivity : AppCompatActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        App()
         setContentView(resLayout)
         createText()
-
     }
 
     private fun createText() {

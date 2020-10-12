@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun nextActivity(){
-        val intent = Intent(this, MatrixActivity::class.java)
+        val intent = Intent(this, BorderActivity::class.java)
         startActivity(intent)
     }
 }
