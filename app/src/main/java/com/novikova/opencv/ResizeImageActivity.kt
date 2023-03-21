@@ -67,12 +67,12 @@ class ResizeImageActivity : AppCompatActivity() {
         firstCol: Int
     ) {
         var left = firstRow
-        var right = left + topImage.rows()
-        var top = firstCol//end
-        var bottom = top + topImage.cols()//end
+        var right = left + topImage.cols()
+        var top = firstCol
+        var bottom = top + topImage.rows()
 
-        for (i in top until bottom) {
-            for (j in left..right + 1) {
+        for (i in top..bottom) {
+            for (j in left..right) {
                 val arr = topImage.get(i - top, j - left)
                 if (arr != null) {
                     dst.put(i, j, arr[0], arr[1], arr[2])
@@ -80,8 +80,8 @@ class ResizeImageActivity : AppCompatActivity() {
             }
         }
 
-        top = bottom - 2
-        bottom = top + centerImage.cols()
+        top = bottom
+        bottom = top + centerImage.rows()
 
         for (i in top..bottom) {
             for (j in left..right + 1) {
@@ -92,11 +92,11 @@ class ResizeImageActivity : AppCompatActivity() {
             }
         }
 
-        top = bottom - 2
-        bottom = top + bottomImage.cols()
+        top = bottom
+        bottom = top + bottomImage.rows()
 
         for (i in top..bottom) {
-            for (j in left..right + 1) {
+            for (j in left..right) {
                 val arr = bottomImage.get(i - top, j - left)
                 if (arr != null) {
                     dst.put(i, j, arr[0], arr[1], arr[2])
