@@ -1,6 +1,7 @@
 package com.novikova.opencv
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.novikova.opencv.common.*
 import kotlinx.android.synthetic.main.activity_affine_deformation.originalImage
@@ -25,14 +26,16 @@ class ResizeImageActivity : AppCompatActivity() {
         val topEyeRect = getTopEyeRectangle(src, FIRST_POINT_X, FIRST_POINT_Y, RADIUS_CIRCLE, RADIUS_FACE)
         val eyeRect = getEyeRectangle(src, FIRST_POINT_X, FIRST_POINT_Y, RADIUS_CIRCLE)
         val bottomEyeRect = getBottomEyeRectangle(src, FIRST_POINT_X, FIRST_POINT_Y, RADIUS_CIRCLE, RADIUS_FACE)
+        val height = topEyeRect.rows() + eyeRect.rows() + bottomEyeRect.rows()
 
         //get resized rectangles
         val newEyeHeight = RADIUS_CIRCLE
         val decreaseEyeRect = getResizeMat(eyeRect, newEyeHeight.toDouble())
 
-        val increaseHeight = topEyeRect.height() + (newEyeHeight / 2)
-        val increaseTopEyeRect = getResizeMat(topEyeRect, increaseHeight.toDouble())
-        val increaseBottomEyeRect = getResizeMat(bottomEyeRect, increaseHeight.toDouble())
+        val increaseHeightTop = topEyeRect.height() + (newEyeHeight / 2)
+        val increaseHeightBottom = height - newEyeHeight - increaseHeightTop
+        val increaseTopEyeRect = getResizeMat(topEyeRect, increaseHeightTop.toDouble())
+        val increaseBottomEyeRect = getResizeMat(bottomEyeRect, increaseHeightBottom.toDouble())
 
         //save resized rectangles to src matrix for copy
         val matrix = Mat(src.rows(), src.cols(), src.type())
@@ -66,6 +69,7 @@ class ResizeImageActivity : AppCompatActivity() {
         firstRow: Int,
         firstCol: Int
     ) {
+        Log.d("length matrix", "${topImage.rows() + centerImage.rows() + bottomImage.rows()}")
         var left = firstRow
         var right = left + topImage.cols()
         var top = firstCol
@@ -179,7 +183,7 @@ class ResizeImageActivity : AppCompatActivity() {
         const val NAME_IMAGE = "dog_2.jpg"
         const val FIRST_POINT_X = 630.0
         const val FIRST_POINT_Y = 510.0
-        const val RADIUS_CIRCLE = 27
+        const val RADIUS_CIRCLE = 35
         const val RADIUS_FACE = 66
     }
 
