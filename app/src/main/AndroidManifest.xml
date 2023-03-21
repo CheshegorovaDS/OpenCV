@@ -23,6 +23,9 @@
         <activity android:name="DrawFigureActivity"/>
         <activity android:name="TextActivity"/>
         <activity android:name="ContourActivity"/>
+        <activity android:name=".AffineDeformationActivity"/>
+        <activity android:name=".ResizeImageActivity"/>
+        <activity android:name=".FindingCircleActivity"/>
     </application>
 
 </manifest>

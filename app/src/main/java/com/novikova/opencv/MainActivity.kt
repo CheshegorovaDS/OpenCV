@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun nextActivity(){
-        val intent = Intent(this, ContourActivity::class.java)
+        val intent = Intent(this, ResizeImageActivity::class.java)
         startActivity(intent)
     }
 }

@@ -2,9 +2,15 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/OpenCV.iml" filepath="$PROJECT_DIR$/.idea/OpenCV.iml" group="OpenCV" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="OpenCV/app" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/opencv-sdk/opencv-sdk.iml" filepath="$PROJECT_DIR$/.idea/modules/opencv-sdk/opencv-sdk.iml" group="OpenCV/opencv-sdk" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/OpenCV.iml" filepath="$PROJECT_DIR$/.idea/OpenCV.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/OpenCV.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/OpenCV.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/OpenCV.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/OpenCV.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/OpenCV.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/OpenCV.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/OpenCV.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/OpenCV.app.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/opencv-sdk/OpenCV.opencv-sdk.iml" filepath="$PROJECT_DIR$/.idea/modules/opencv-sdk/OpenCV.opencv-sdk.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/opencv-sdk/OpenCV.opencv-sdk.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/opencv-sdk/OpenCV.opencv-sdk.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/opencv-sdk/OpenCV.opencv-sdk.main.iml" filepath="$PROJECT_DIR$/.idea/modules/opencv-sdk/OpenCV.opencv-sdk.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/opencv-sdk/OpenCV.opencv-sdk.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/opencv-sdk/OpenCV.opencv-sdk.unitTest.iml" />
     </modules>
   </component>
 </project>
