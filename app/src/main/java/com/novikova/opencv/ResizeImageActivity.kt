@@ -143,10 +143,10 @@ class ResizeImageActivity : AppCompatActivity() {
 
     private fun getBottomEyeRectangle(src: Mat, x: Double, y: Double, radiusEye: Int, radiusFace: Int): Mat {
         return src.submat(
-            (x + radiusEye).toInt(),
-            (x + radiusFace).toInt(),
-            (y - radiusEye).toInt(),
-            (y + radiusEye).toInt()
+            (y + radiusEye).toInt(),
+            (y + radiusFace).toInt(),
+            (x - radiusEye).toInt(),
+            (x + radiusEye).toInt()
         )
     }
 
