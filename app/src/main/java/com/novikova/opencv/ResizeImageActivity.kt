@@ -20,7 +20,7 @@ class ResizeImageActivity : AppCompatActivity() {
 
 //        openMatrix(matrixWithPoints, originalImage)
 //        openOtherImage(matrixWithPoints)
-        copyMat(src, src)
+        copyMat(matrixWithPoints, src)
     }
 
     private fun openOtherImage(src: Mat) {
@@ -60,13 +60,20 @@ class ResizeImageActivity : AppCompatActivity() {
     private fun copyMat(src: Mat, img: Mat) {
         val eyeRect = getEyeRectangle(src, FIRST_POINT_X, FIRST_POINT_Y, RADIUS_CIRCLE)
 
-        val mat = Mat(src.rows(), src.cols(), src.type())
-//        eyeRect.copyTo(mat)
-
         val top = (FIRST_POINT_X - RADIUS_CIRCLE).toInt()
         val bottom = (FIRST_POINT_X + RADIUS_CIRCLE).toInt()
         val right = (FIRST_POINT_Y + RADIUS_CIRCLE).toInt()
         val left = (FIRST_POINT_Y - RADIUS_CIRCLE).toInt()
+
+        val mat = getSrcForCopy(
+            eyeRect,
+            img,
+            top,
+            bottom,
+            left,
+            right
+        )
+
         val mask = getMask(
             src,
             top,
@@ -75,17 +82,33 @@ class ResizeImageActivity : AppCompatActivity() {
             right
         )
 
-//        eyeRect.copyTo(mat, mask)
+        mat.copyTo(img, mask)
+        openMatrix(img, originalImage)
+    }
 
-        src.copyTo(src, mask)
-        openMatrix(src, originalImage)
+    private fun getSrcForCopy(src: Mat, dst: Mat, top: Int, bottom: Int, left: Int, right: Int): Mat {
+        if (dst.channels() != 3) {
+            throw Exception("The count of channels is wrong.")
+        }
+        val mat = Mat(dst.rows(), dst.cols(), dst.type())
+
+        for (i in left..right) {
+            for (j in top..bottom) {
+                val arr = src.get(i - left, j - top)
+                if (arr != null) {
+                    mat.put(i, j, arr[0], arr[1], arr[2])
+                }
+            }
+        }
+
+        return mat
     }
 
     private fun getMask(dst: Mat, top: Int, bottom: Int, left: Int, right: Int): Mat {
         val mask = Mat(dst.rows(), dst.cols(), dst.type())
 
-        for (i in left..right) {
-            for (j in top..bottom) {
+        for (i in left until right) {
+            for (j in top until bottom) {
                 mask.put(i, j, 1.0, 1.0, 1.0)
             }
         }
