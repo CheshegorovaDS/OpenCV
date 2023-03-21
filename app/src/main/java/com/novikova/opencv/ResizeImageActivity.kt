@@ -29,10 +29,10 @@ class ResizeImageActivity : AppCompatActivity() {
         val height = topEyeRect.rows() + eyeRect.rows() + bottomEyeRect.rows()
 
         //get resized rectangles
-        val newEyeHeight = RADIUS_CIRCLE
+        val newEyeHeight = 1
         val decreaseEyeRect = getResizeMat(eyeRect, newEyeHeight.toDouble())
 
-        val increaseHeightTop = topEyeRect.height() + (newEyeHeight / 2)
+        val increaseHeightTop = (height - newEyeHeight) / 2
         val increaseHeightBottom = height - newEyeHeight - increaseHeightTop
         val increaseTopEyeRect = getResizeMat(topEyeRect, increaseHeightTop.toDouble())
         val increaseBottomEyeRect = getResizeMat(bottomEyeRect, increaseHeightBottom.toDouble())
